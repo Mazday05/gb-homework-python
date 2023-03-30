@@ -1,17 +1,12 @@
-#Пользователь вводит время в секундах.
-#Переведите время в часы, минуты и секунды и выведите в формате чч:мм:сс.
-#Используйте форматирование строк.
+"""
+Создать текстовый файл (не программно), сохранить в нем несколько строк,
+выполнить подсчет количества строк, количества слов в каждой строке.
+"""
 
-user_input = input("Введите время в секундах >>> ")
+with open('2.txt') as f:
+    rows = f.readlines()
+    expanded_rows = [row.split() for row in rows]
 
-if not user_input.isdigit():
-    print("Неверный формат числа")
-    exit()
-seconds = int(user_input)
-hours = seconds // 3600
-minutes = (seconds % 3600) // 60
-seconds = (seconds % 3600) % 60
+rows_count, words_count = len(rows), sum([len(word_list) for word_list in expanded_rows])
 
-# hours, minutes, seconds = user_seconds // 3600, (user_seconds % 3600) // 60, (user_seconds % 3600) % 60
-
-print(f"{hours:>02}:{minutes:>02}:{seconds:>02}")
+print(f"Всего строк - {rows_count}, всего слов - {words_count}")
