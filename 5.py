@@ -1,22 +1,17 @@
-#Запросите у пользователя значения выручки и издержек фирмы.
-#Определите, с каким финансовым результатом работает фирма
-#(прибыль - выручка больше издержек, или убыток — издержки больше выручки).
-#Выведите соответствующее сообщение.
-#Если фирма отработала с прибылью, вычислите рентабельность выручки (соотношение прибыли к выручке).
-#Далее запросите численность сотрудников фирмы и определите прибыль фирмы в расчете на одного сотрудника.
+"""
+Создать (программно) текстовый файл, записать в него программно набор чисел, разделенных пробелами.
+Программа должна подсчитывать сумму чисел в файле и выводить ее на экран.
+"""
+from random import randrange
 
-revenue = int(input("Введите сумму выручки >>> "))
-costs = int(input("Введите сумму издержек >>> "))
+random_numbers = [randrange(1, 200) for _ in range(50)]
 
-profit = revenue - costs
+with open('5.txt', 'w') as output_data:
+    output_data.write(" ".join(map(str, random_numbers)))
 
-if profit:
-    profitability = profit / revenue
-    print(f"Прибыль = {profit}, рентабельность = {profitability}")
+with open('5.txt') as input_data:
+    numbers = input_data.read().split()
 
-    workers_count = int(input("Укажите количество сотрудников >>> "))
-
-    profit_per_worker = profit / workers_count
-    print(f"Прибыль на одного сотрудника = {profit_per_worker}")
-else:
-    print(f"Убыток = {profit}")
+    print(
+        sum(float(x) for x in numbers)
+    )

@@ -1,20 +1,28 @@
-#Пользователь вводит целое положительное число.
-#Найдите самую большую цифру в числе.
-#Для решения используйте цикл while и арифметические операции.
+"""
+Создать (не программно) текстовый файл со следующим содержимым:
+One - 1
+Two - 2
+Three - 3
+Four - 4
+Необходимо написать программу, открывающую файл на чтение и считывающую построчно данные.
+При этом английские числительные должны заменяться на русские.
+Новый блок строк должен записываться в новый текстовый файл.
+"""
 
-user_input = input("Введите число >>> ")
+translations = {
+    "One": "Один",
+    "Two": "Два",
+    "Three": "Три",
+    "Four": "Четыре",
+    # и так далее ...
+}
 
-if not user_input.isdigit():
-    print("Неверный формат числа")
-    exit()
+converted_rows = []
 
-number = int(user_input)
-max_num = 0
+with open("4.txt") as input_data:
+    for row in input_data:
+        name, value = row.split(' - ')
+        converted_rows.append(f"{translations[name]} - {value}")
 
-while number and max_num != 9:
-    print(number)
-    current = number % 10
-    number = number // 10
-    max_num = current if current > max_num else max_num
-
-print(max_num)
+with open("4_ru.txt", "w") as output_data:
+    output_data.writelines(converted_rows)
